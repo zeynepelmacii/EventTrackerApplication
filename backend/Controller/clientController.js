@@ -32,4 +32,29 @@ const deleteClient = async (req,res)=>{
     }
 }
 
-module.exports={getAllClients, newClient, deleteClient}
+const getOneClient = async (req,res) => {
+    const {id:clientId} = req.params
+    try {
+      const client = await Client.findById({_id:clientId})
+      if(!client) {return res.status(404).json({msg:"No client found"})}
+      res.status(201).json({msg: 'client with specified ID', client:client})
+    } catch (error) {
+      res.status(500).json({msg: error})
+    }
+  }
+  
+  
+  const updateClient = async (req,res) => {
+    const {id:clientId} = req.params
+    try {
+        const client = await Client.findOneAndUpdate({_id:clientId},req.body,{ new: true })
+        if(!client)return res.status(404).json({msg:'No client found'})
+  
+        res.status(201).json({msg: 'Client updated ', client:client})
+    } catch (error) {
+        res.status(500).json({msg: error})
+    }    
+  }
+  
+
+module.exports={getAllClients, newClient, deleteClient, getOneClient, updateClient}
