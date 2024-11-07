@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const {getAllEvents, newEvent, deleteEvent, getEvenstByClientEmail, getOneEvent, updateEvent} = require('../Controller/eventController')
 const {getAllClients, newClient, deleteClient, getOneClient, updateClient} = require('../Controller/clientController')
+const {getAllEmployees, newEmployee, deleteEmployee, getOneEmployee, updateEmployee} = require('../Controller/employeeController')
 
 //events routes
 router.get('/event/getAllEvents', getAllEvents) 
@@ -21,6 +22,11 @@ router.patch('/client/updateClient/:id',updateClient)
 
 
 //employees routes
+router.get('/employee/getAllEmployees', getAllEmployees) 
+router.post('/employee/newEmployee', newEmployee) 
+router.delete('/employee/deleteEmployee/:id', deleteEmployee) 
+router.get('/employee/getOneEmployee/:id', getOneEmployee) 
+router.patch('/employee/updateEmployee/:id', updateEmployee) 
 
 
 module.exports=router

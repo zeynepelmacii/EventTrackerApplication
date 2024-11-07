@@ -79,7 +79,7 @@ const eventModel = new mongoose.Schema({
       },
       default: [
         { role: 'Lead', name: 'Barış Arduç' },
-        { role: 'Helper', name: 'Gupse Özay' }
+        { role: 'Employee', name: 'Gupse Özay' }
       ]
     },
     eventStatus: {
